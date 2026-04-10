@@ -240,7 +240,7 @@ class ThreeCardPoker(object):
                                                np.where(player_values > self.tc_lookup.MAX_STRAIGHT, 3,
                                                   np.where(player_values > self.tc_lookup.MAX_TRIPS, 6,
                                                       np.where(player_values > self.tc_lookup.MAX_STRAIGHT_FLUSH, 30,
-                                                          np.where(player_values > 1, 40, 50)))))))
+                                                          np.where(player_values > 1, 40, 200)))))))
         
         #Calculate Ante wins/losses
         #If a play bet is not made, ante loses (-1) automatically
@@ -317,11 +317,11 @@ class ThreeCardPoker(object):
         #Royal Flush        1000
 
         six_card_multipliers[:] = np.where(six_card_multipliers > SC_MAX_TRIPS, -1,
-                                           np.where(six_card_multipliers > SC_MAX_STRAIGHT, 5,
+                                           np.where(six_card_multipliers > SC_MAX_STRAIGHT, 7,
                                                np.where(six_card_multipliers > SC_MAX_FLUSH, 10,
                                                   np.where(six_card_multipliers > SC_MAX_FULL_HOUSE, 15,
-                                                      np.where(six_card_multipliers > SC_MAX_QUADS, 25,
-                                                          np.where(six_card_multipliers > SC_MAX_STRAIGHT_FLUSH, 50,
+                                                      np.where(six_card_multipliers > SC_MAX_QUADS, 20,
+                                                          np.where(six_card_multipliers > SC_MAX_STRAIGHT_FLUSH, 100,
                                                               np.where(six_card_multipliers > 1, 200, 1000)))))))
 
         return multipliers
